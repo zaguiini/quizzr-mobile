@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, H1, H3 } from 'native-base'
-import { StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   secondaryTextContainer: {
@@ -10,17 +9,12 @@ const styles = StyleSheet.create({
 
 const Hero = () => (
   <View>
-    <H1>
-      Welcome to{' '}
-      <H1 primary bold>
-        Quizzr
-      </H1>
-    </H1>
+    <Text>
+      Welcome to <Text>Quizzr</Text>
+    </Text>
     <View style={styles.secondaryTextContainer}>
-      <H3 secondary>It&apos;s time to test your knowledge!</H3>
-      <H3 secondary bold>
-        Can you score 100%?
-      </H3>
+      <Text>It&apos;s time to test your knowledge!</Text>
+      <Text>Can you score 100%?</Text>
     </View>
   </View>
 )

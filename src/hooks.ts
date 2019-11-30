@@ -92,8 +92,13 @@ export const useActionHandlers = () => {
     navigation.navigate('Quiz')
   }
 
+  const seeResult = () => {
+    navigation.navigate('Result')
+  }
+
   return {
     startQuiz,
     resumeQuiz,
+    seeResult,
   }
 }

@@ -79,7 +79,7 @@ const model: StoreModel = {
           })
         } catch (e) {
           if (!get(e, 'token.reason.__CANCEL__')) {
-            console.error(e)
+            console.log(e)
             dispatch.setError({ id, error: 'Something wrong happened!' })
           }
         } finally {

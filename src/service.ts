@@ -25,7 +25,8 @@ export const transformQuizQuestion = ({
 })
 
 export const fetchQuiz = async ({ cancellationToken }: FetchQuiz) => {
-  const url = `${process.env.REACT_APP_API_URL}?amount=10&difficulty=easy&type=boolean`
+  const url =
+    'https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean'
   const { data } = await axios.get<APIResponse>(url, {
     cancelToken: cancellationToken.token,
   })

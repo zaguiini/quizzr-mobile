@@ -1,15 +1,15 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
-import { Button, Text } from 'native-base'
+import { Button, View, StyleSheet } from 'react-native'
+import { useQuiz } from 'src/hooks'
 
 export enum Action {
   TakeQuiz = 'TAKE_QUIZ',
   ContinueQuiz = 'CONTINUE_QUIZ',
+  SeeQuizResult = 'SEE_QUIZ_RESULT',
 }
 
 interface CallToActionsProps {
   onAction: (action: Action) => void
-  hasOngoingQuiz: boolean
 }
 
 const styles = StyleSheet.create({
@@ -26,22 +26,24 @@ const styles = StyleSheet.create({
   whiteText: { color: 'white' },
 })
 
-const CallToActions = ({ onAction, hasOngoingQuiz }: CallToActionsProps) => {
+const CallToActions = ({ onAction }: CallToActionsProps) => {
+  const quiz = useQuiz()
+
   return (
     <View style={styles.container}>
-      {hasOngoingQuiz && (
+      {quiz.currentQuiz && (
         <Button
-          bordered
-          onPress={() => onAction(Action.ContinueQuiz)}
-          style={styles.continueButton}
-        >
-          <Text>Continue current quiz</Text>
-        </Button>
+          title={
+            quiz.isFinished ? 'See last quiz result' : 'Continue current quiz'
+          }
+          onPress={() =>
+            onAction(
+              quiz.isFinished ? Action.SeeQuizResult : Action.ContinueQuiz
+            )
+          }
+        />
       )}
-      <Button onPress={() => onAction(Action.TakeQuiz)}>
-        {/* bug in the library... loved it */}
-        <Text style={styles.whiteText}>Take quiz</Text>
-      </Button>
+      <Button title="Take quiz" onPress={() => onAction(Action.TakeQuiz)} />
     </View>
   )
 }
