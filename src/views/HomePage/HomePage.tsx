@@ -2,10 +2,11 @@ import React from 'react'
 import Hero from './components/Hero'
 import CallToActions from './components/CallToActions'
 import { View } from 'react-native'
+import styles from './styles'
 
 const HomePage = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Hero />
       <CallToActions />
     </View>
@@ -13,7 +14,7 @@ const HomePage = () => {
 }
 
 HomePage.navigationOptions = {
-  // headerShown: false,
+  headerShown: false,
 }
 
 export default HomePage

@@ -1,26 +1,27 @@
 import React from 'react'
-import { Container, Text, View } from 'native-base'
+import { View, H1, H3 } from 'native-base'
+import { StyleSheet } from 'react-native'
 
-// const Hero = () => (
-//   <View>
-//     <Text fontSize="4xl">
-//       Welcome to{' '}
-//       <Text fontSize="4xl" color="purple.500" fontWeight="bold">
-//         Quizzr
-//       </Text>
-//     </Text>
-//     <Text fontSize="2xl" color="gray.500">
-//       It&apos;s time to test your knowledge!
-//     </Text>
-//     <Text fontSize="2xl" fontWeight="bold" color="gray.500">
-//       Can you score 100%?
-//     </Text>
-//   </View>
-// )
+const styles = StyleSheet.create({
+  secondaryTextContainer: {
+    marginTop: 16,
+  },
+})
 
 const Hero = () => (
   <View>
-    <Text>Open up App.js to start working on your app!</Text>
+    <H1>
+      Welcome to{' '}
+      <H1 primary bold>
+        Quizzr
+      </H1>
+    </H1>
+    <View style={styles.secondaryTextContainer}>
+      <H3 secondary>It&apos;s time to test your knowledge!</H3>
+      <H3 secondary bold>
+        Can you score 100%?
+      </H3>
+    </View>
   </View>
 )
 
