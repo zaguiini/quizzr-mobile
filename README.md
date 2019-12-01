@@ -1,4 +1,4 @@
-# [Quizzr]
+# Quizzr
 
 A simple trivia app for mobile.
 
