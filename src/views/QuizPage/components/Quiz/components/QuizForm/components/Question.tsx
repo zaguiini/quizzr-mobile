@@ -1,6 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, Text, Button } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { AllHtmlEntities } from 'html-entities'
+import Text from 'src/components/Text/Text'
+import Button from 'src/components/Button/Button'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,13 +14,21 @@ const styles = StyleSheet.create({
 
   question: {
     marginTop: 92,
-    textAlign: 'center',
-    fontSize: 32,
   },
 
   answerButtons: {
     marginTop: 'auto',
+    width: '100%',
     flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  answerButton: {
+    flex: 1,
+  },
+
+  leftButton: {
+    marginRight: 32,
   },
 })
 
@@ -32,10 +42,26 @@ const entities = new AllHtmlEntities()
 const Question = ({ onAnswer, question }: QuestionProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.question}>{entities.decode(question)}</Text>
+      <View style={styles.question}>
+        <Text size="4xl" alignment="center">
+          {entities.decode(question)}
+        </Text>
+      </View>
       <View style={styles.answerButtons}>
-        <Button title="TRUE" onPress={() => onAnswer(true)} />
-        <Button title="FALSE" onPress={() => onAnswer(false)} />
+        <Button
+          color="green.500"
+          style={[styles.answerButton, styles.leftButton]}
+          onPress={() => onAnswer(true)}
+        >
+          TRUE
+        </Button>
+        <Button
+          color="red.500"
+          style={styles.answerButton}
+          onPress={() => onAnswer(false)}
+        >
+          FALSE
+        </Button>
       </View>
     </View>
   )

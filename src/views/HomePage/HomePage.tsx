@@ -1,10 +1,17 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { useActionHandlers } from 'src/hooks'
 
 import Hero from './components/Hero'
 import CallToActions, { Action } from './components/CallToActions'
-import styles from './styles'
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+  },
+})
 
 const HomePage = () => {
   const { startQuiz, resumeQuiz, seeResult } = useActionHandlers()

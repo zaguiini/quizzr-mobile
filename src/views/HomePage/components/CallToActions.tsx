@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, View, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { useQuiz } from 'src/hooks'
+import Button from 'src/components/Button/Button'
 
 export enum Action {
   TakeQuiz = 'TAKE_QUIZ',
@@ -22,8 +23,6 @@ const styles = StyleSheet.create({
   continueButton: {
     marginBottom: 12,
   },
-
-  whiteText: { color: 'white' },
 })
 
 const CallToActions = ({ onAction }: CallToActionsProps) => {
@@ -33,17 +32,18 @@ const CallToActions = ({ onAction }: CallToActionsProps) => {
     <View style={styles.container}>
       {quiz.currentQuiz && (
         <Button
-          title={
-            quiz.isFinished ? 'See last quiz result' : 'Continue current quiz'
-          }
+          variation="outlined"
+          style={styles.continueButton}
           onPress={() =>
             onAction(
               quiz.isFinished ? Action.SeeQuizResult : Action.ContinueQuiz
             )
           }
-        />
+        >
+          {quiz.isFinished ? 'See last quiz result' : 'Continue current quiz'}
+        </Button>
       )}
-      <Button title="Take quiz" onPress={() => onAction(Action.TakeQuiz)} />
+      <Button onPress={() => onAction(Action.TakeQuiz)}>Take quiz</Button>
     </View>
   )
 }

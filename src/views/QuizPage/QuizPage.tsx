@@ -7,7 +7,7 @@ import Placeholder from 'src/components/Placeholder'
 import Information from 'src/components/Information'
 import Quiz from './components/Quiz/Quiz'
 import { NavigationScreenConfigProps } from 'react-navigation'
-import { Button } from 'react-native'
+import Button from 'src/components/Button/Button'
 
 const QuizPage = () => {
   const { quiz, id } = useStoreState((state) => ({
@@ -43,11 +43,12 @@ const QuizPage = () => {
         <Information
           secondary={
             <Button
-              title="Try again"
               onPress={() => {
                 cancel.current = fetchQuiz({ id })
               }}
-            />
+            >
+              Try again
+            </Button>
           }
         >
           Something wrong happened!
