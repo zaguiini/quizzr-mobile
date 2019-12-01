@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   itemIcon: {
     width: 16,
     height: 16,
-    marginRight: 12,
   },
 })
 
@@ -46,7 +45,7 @@ const Item = ({ question, answer, correctAnswer }: QuizQuestion) => {
   return (
     <View>
       <Text size="xl" color={color}>
-        <Icon style={styles.itemIcon} color={get(colors, color)} />
+        <Icon style={styles.itemIcon} color={get(colors, color)} />{' '}
         {entities.decode(question)}
       </Text>
     </View>

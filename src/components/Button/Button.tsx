@@ -1,8 +1,7 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useButtonStyles, UseButtonProps } from './hooks'
 import Text from '../Text/Text'
-import { TouchableOpacityProps } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 interface ButtonProps extends UseButtonProps {
   onPress: () => void
@@ -20,10 +19,7 @@ const Button = ({
   const { touchableStyles, textProps } = useButtonStyles({ color, variation })
 
   return (
-    <TouchableOpacity
-      containerStyle={[touchableStyles, style]}
-      onPress={onPress}
-    >
+    <TouchableOpacity style={[touchableStyles, style]} onPress={onPress}>
       <Text {...textProps}>{children}</Text>
     </TouchableOpacity>
   )

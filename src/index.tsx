@@ -17,7 +17,7 @@ const AppNavigator = createStackNavigator(
     Result: ResultPage,
   },
   {
-    initialRouteName: 'Result',
+    initialRouteName: 'Home',
   }
 )
 
