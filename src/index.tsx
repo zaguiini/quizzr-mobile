@@ -9,6 +9,7 @@ import { store, persistor } from './store/store'
 import HomePage from './views/HomePage/HomePage'
 import QuizPage from './views/QuizPage/QuizPage'
 import ResultPage from './views/ResultPage/ResultPage'
+import { Animated } from 'react-native'
 
 const AppNavigator = createStackNavigator(
   {
@@ -17,6 +18,13 @@ const AppNavigator = createStackNavigator(
     Result: ResultPage,
   },
   {
+    headerMode: 'screen',
+    transitionConfig: () => ({
+      transitionSpec: {
+        timing: Animated.timing,
+      },
+      screenInterpolator: () => {},
+    }),
     initialRouteName: 'Home',
   }
 )

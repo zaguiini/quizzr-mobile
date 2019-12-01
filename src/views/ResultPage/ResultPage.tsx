@@ -1,7 +1,7 @@
 import React from 'react'
 import get from 'lodash/get'
 import { View, SafeAreaView, StyleSheet, FlatList } from 'react-native'
-import { useQuiz, useNavigation } from 'src/hooks'
+import { useQuiz, useNavigation, useActionHandlers } from 'src/hooks'
 import { QuizQuestion } from 'src/store/types'
 import { AllHtmlEntities } from 'html-entities'
 import { StackActions, NavigationActions } from 'react-navigation'
@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
   },
+
+  firstActionButton: {
+    marginBottom: 12,
+  },
 })
 
 const Item = ({ question, answer, correctAnswer }: QuizQuestion) => {
@@ -58,6 +62,7 @@ const ResultPage = () => {
   const quiz = useQuiz()
   const setCurrentQuiz = useStoreActions((store) => store.setCurrentQuiz)
   const navigation = useNavigation()
+  const { startQuiz } = useActionHandlers()
 
   const goToHomeScreen = () => {
     setCurrentQuiz(undefined)
@@ -68,6 +73,11 @@ const ResultPage = () => {
         actions: [NavigationActions.navigate({ routeName: 'Home' })],
       })
     )
+  }
+
+  const playAgain = () => {
+    goToHomeScreen()
+    startQuiz()
   }
 
   return (
@@ -90,7 +100,12 @@ const ResultPage = () => {
           />
         </View>
         <View>
-          <Button onPress={goToHomeScreen}>Go to home screen</Button>
+          <Button style={styles.firstActionButton} onPress={playAgain}>
+            Play again
+          </Button>
+          <Button variation="outlined" onPress={goToHomeScreen}>
+            Go to home screen
+          </Button>
         </View>
       </View>
     </SafeAreaView>

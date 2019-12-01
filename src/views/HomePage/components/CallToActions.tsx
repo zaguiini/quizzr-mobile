@@ -26,9 +26,7 @@ const styles = StyleSheet.create({
 })
 
 const CallToActions = ({ onAction }: CallToActionsProps) => {
-  const baseQuiz = useQuiz()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const quiz = React.useMemo(() => baseQuiz, [])
+  const quiz = useQuiz()
 
   return (
     <View style={styles.container}>
